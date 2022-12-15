@@ -1,0 +1,5 @@
+services:
+  whizzo-worker:
+    build: whizzo-worker
+    ports:
+      - 8080:8080
