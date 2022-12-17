@@ -10,7 +10,7 @@ services:
       - DATABASE_DB=example
       - DATABASE_USER=root
       - DATABASE_PASSWORD=/run/secrets/db-password
-      - DATABASE_HOST=db
+      - DATABASE_HOST=whizzo-db
       - NODE_ENV=development
     ports:
       - 80:80
@@ -39,6 +39,7 @@ services:
       - db-password
     volumes:
       - db-data:/var/lib/mysql
+#      - ./whizzo-backend/db/init:/docker-entrypoint-initdb.d
     networks:
       - private
     environment:

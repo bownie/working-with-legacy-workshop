@@ -4,8 +4,9 @@ module.exports = function(app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://backend",
+      target: "http://whizzo-backend/",
       pathRewrite: { "^/api": "" }
+      //changeOrigin: true
     })
   );
 };
