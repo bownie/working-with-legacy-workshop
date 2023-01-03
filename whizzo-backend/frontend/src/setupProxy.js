@@ -6,7 +6,16 @@ module.exports = function(app) {
     createProxyMiddleware({
       target: "http://whizzo-backend/",
       pathRewrite: { "^/api": "" }
-      //changeOrigin: true
     })
   );
+
+  app.use(
+    "/worker",
+    createProxyMiddleware({
+      target: "http://whizzo-worker:8080/",
+      pathRewrite: { "^/worker": "" }
+    })
+  );
+
+  
 };
