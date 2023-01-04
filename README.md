@@ -1,12 +1,15 @@
-# Legacy and Systems Thinking Workshop
+# Working with Legacy Systems Workshop
+
 
 
 
 ## Prerequisites
 
-- Docker desktop installed with docker-compose
+- Docker desktop installed
 - VS Code or your favourite editor
-- Some knowledge of 
+- Some knowledge of docker, volumes and networking
+- Some knowledge of SQL, Java, node, React and Javascript
+
 
 # Summary
 
