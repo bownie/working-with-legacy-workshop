@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS wb_employee
+DROP TABLE IF EXISTS wb_employee;
+
+CREATE TABLE wb_employee
 (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `employee_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer name',
@@ -13,7 +15,5 @@ CREATE TABLE IF NOT EXISTS wb_employee
     `employee_type_id` bigint(20) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-delete from wb_employee;
 
 insert into wb_employee values(1, "Davey Jones", "The Bottom of the Sea 11", "Atlantic Ocean", "1122YY", "North Sea", "+31 638 378323", "davey@mareena.com", "davey@jones.sea", 1, 1);

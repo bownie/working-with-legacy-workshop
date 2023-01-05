@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS wb_boatyard
+DROP TABLE IF EXISTS wb_boatyard;
+
+CREATE TABLE wb_boatyard
 (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `boatyard_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'boatyard name',
@@ -10,6 +12,4 @@ CREATE TABLE IF NOT EXISTS wb_boatyard
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-delete from wb_boatyard;
-
-insert in wb_boatyard values (1, "Zeeland Boats", "Zeeland Brug 23", "Kats", "NL", "1023AB", 1);
+insert into wb_boatyard values (1, "Zeeland Boats", "Zeeland Brug 23", "Kats", "1023AB", "NL", 1);

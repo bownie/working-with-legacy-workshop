@@ -1,0 +1,10 @@
+source wb_marina.sql;
+source wb_boat_type.sql;
+source wb_customer_type.sql;
+source wb_employee_type.sql;
+source wb_boatyard.sql;
+source wb_pontoon.sql;
+source wb_berth.sql;
+source wb_customer.sql;
+source wb_employee.sql;
+source wb_boat.sql;

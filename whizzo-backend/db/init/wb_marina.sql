@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS wb_marina
+DROP TABLE IF EXISTS wb_marina;
+
+CREATE TABLE wb_marina
 (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `marina_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'marina name',
@@ -10,7 +12,5 @@ CREATE TABLE IF NOT EXISTS wb_marina
     `marina_website` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'website',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-delete from wb_marina;
 
 insert into wb_marina values (1, "Kats Marina", "Zeeland Brug 11", "Kats", "1023AH", "NL", "+0102332332", "https://katsmarina.com");

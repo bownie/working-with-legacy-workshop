@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS wb_customer
+DROP TABLE IF EXISTS wb_customer;
+
+CREATE TABLE wb_customer
 (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `customer_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'customer name',
@@ -14,6 +16,4 @@ CREATE TABLE IF NOT EXISTS wb_customer
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-delete from wb_customer;
-
-insert into wb_customer values (1, "Long John Silver", "The High Seas", "Somewhere in the Ocean", "DUNNO", "NA", "+4472673 827382", "longjohn@silver.net", 0, 1);
+insert into wb_customer values (1, "Long John Silver", "The High Seas", "Somewhere in the Ocean", "DUNNO", "NA", "NA", "+4472673 827382", "longjohn@silver.net", 0, 1);
