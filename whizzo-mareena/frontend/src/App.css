@@ -13,6 +13,30 @@
   }
 }
 
+.NavTable {
+  background-color: #282c34;
+  min-height: 40px;
+  justify-content: center;
+  display: flex;
+}
+
+td, th {
+  width: 10em;
+  align-items: center;
+  justify-content: center;
+  color: antiquewhite;
+}
+
+button {
+  background-color: #282c34;
+  border: none;
+  color: red;
+}
+
+button:hover {
+  color: yellow;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
