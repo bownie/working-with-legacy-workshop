@@ -33,6 +33,13 @@ app.get("/marina", function(req, res, next) {
   .catch(next);
 })
 
+app.get("/boats", function(req, res, next) {
+  database.raw('select * from wb_boat')
+  .then(([rows, columns]) => rows[0])
+  .then((row) => res.json({ message: `${row.id},${row.boat_name},${row.boat_beam}, ${row.boat_creation_date}, ${row.boat_latest_update}, ${row.boat_owner_ids}` }))
+  .catch(next);
+})
+
 app.get("/healthz", function(req, res) {
   // do app logic here to determine if app is truly healthy
   // you should return 200 if healthy, and anything else will fail
