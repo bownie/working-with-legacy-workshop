@@ -1,16 +1,16 @@
 services:
-  whizzo-backend:
+  mareena-backend:
     build:
       args:
       - NODE_ENV=development
-      context: whizzo-backend/backend
+      context: whizzo-mareena/backend
       target: development
     command: npm run start-watch
     environment:
       - DATABASE_DB=example
       - DATABASE_USER=root
       - DATABASE_PASSWORD=/run/secrets/db-password
-      - DATABASE_HOST=whizzo-db
+      - DATABASE_HOST=mareena-db
       - NODE_ENV=development
     ports:
       - 80:80
@@ -19,16 +19,16 @@ services:
     secrets:
       - db-password
     volumes:
-      - ./whizzo-backend/backend/src:/code/src:ro
-      - ./whizzo-backend/backend/package.json:/code/package.json
-      - ./whizzo-backend/backend/package-lock.json:/code/package-lock.json
+      - ./whizzo-mareena/backend/src:/code/src:ro
+      - ./whizzo-mareena/backend/package.json:/code/package.json
+      - ./whizzo-mareena/backend/package-lock.json:/code/package-lock.json
       - back-notused:/opt/app/node_modules
     networks:
       - public
       - private
     depends_on:
-      - whizzo-db
-  whizzo-db:
+      - mareena-db
+  mareena-db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
     image: mariadb:10.6.4-focal
     # If you really want to use MySQL, uncomment the following line
@@ -39,34 +39,33 @@ services:
       - db-password
     volumes:
       - db-data:/var/lib/mysql
-#      - ./whizzo-backend/db/init:/docker-entrypoint-initdb.d
-      - ./whizzo-backend/db/init:/initialiase-db
+      - ./whizzo-mareena/db/init:/initialiase-db
     networks:
       - private
     environment:
       - MYSQL_DATABASE=example
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
-  whizzo-frontend:
+  mareena-frontend:
     build:
-      context: whizzo-backend/frontend
+      context: whizzo-mareena/frontend
       target: development
     ports:
       - 3000:3000
     volumes:
-      - ./whizzo-backend/frontend/src:/code/src
+      - ./whizzo-mareena/frontend/src:/code/src
       - /code/node_modules
     networks:
       - public
     depends_on:
-      - whizzo-backend
-  whizzo-worker:
+      - mareena-backend
+  mareena-worker:
     build: whizzo-worker/whizzo-worker
     ports:
       - 8080:8080
     networks:
       - public
     depends_on:
-      - whizzo-backend
+      - mareena-backend
 
 networks:
   public:
@@ -76,4 +75,4 @@ volumes:
   db-data:
 secrets:
   db-password:
-    file: whizzo-backend/db/password.txt
+    file: whizzo-mareena/db/password.txt

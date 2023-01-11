@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://whizzo-backend/",
+      target: "http://mareena-backend/",
       pathRewrite: { "^/api": "" }
     })
   );
