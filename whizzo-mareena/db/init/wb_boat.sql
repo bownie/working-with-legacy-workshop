@@ -13,3 +13,5 @@ CREATE TABLE wb_boat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 insert into wb_boat values (1, "Kats boat", 10, 3, "2022-12-31", "2022-12-31", 0);
+insert into wb_boat values (2, "Santa Marina", 30, 6, "2022-12-31", "2022-12-31", 0);
+insert into wb_boat values (3, "Abigail", 10.5, 3.6, "2022-12-31", "2022-12-31", 0);

@@ -9,12 +9,17 @@ import "./App.css";
 function Nav() {
 
   return (
-    <div>
-                    <Link to="/">Home</Link>
-                    <Link to="/boats">Boats</Link>  
-                    <Link to="/users">Users</Link>  
-                    <Link to="/bookings">Bookings</Link>  
-
+    <div className="NavBar">
+        <table>
+        <tbody>
+            <tr>
+                <th><Link to="/">Home</Link></th>
+                <th><Link to="/boats">Boats</Link></th>
+                <th><Link to="/users">Users</Link></th>
+                <th><Link to="/bookings">Bookings</Link></th>
+            </tr>
+            </tbody>
+        </table> 
     </div>
   );
 }

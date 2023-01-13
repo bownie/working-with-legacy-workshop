@@ -29,14 +29,20 @@ app.get("/", function(req, res, next) {
 app.get("/marina", function(req, res, next) {
   database.raw('select * from wb_marina')
   .then(([rows, columns]) => rows[0])
-  .then((row) => res.json({ message: `${row.id},${row.marina_name},${row.marina_address1}` }))
+  .then((row) => res.json({ id: `${row.id}`,
+                            marina_name: `${row.marina_name}`,
+                            marina_address1: `${row.marina_address1}` }))
   .catch(next);
 })
 
 app.get("/boats", function(req, res, next) {
   database.raw('select * from wb_boat')
   .then(([rows, columns]) => rows[0])
-  .then((row) => res.json({ message: `${row.id},${row.boat_name},${row.boat_beam}, ${row.boat_creation_date}, ${row.boat_latest_update}, ${row.boat_owner_ids}` }))
+  .then((row) => res.json({ id: `${row.id}`,
+                            boat_name: `${row.boat_name}`,
+                            boat_beam: `${row.boat_beam}`,
+                            record_creation_date: `${row.boat_creation_date}`,
+                            boat_owner_ids: `${row.boat_latest_update}, ${row.boat_owner_ids}`}))
   .catch(next);
 })
 

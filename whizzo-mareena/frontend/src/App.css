@@ -13,7 +13,7 @@
   }
 }
 
-.NavTable {
+.NavBar {
   background-color: #282c34;
   min-height: 40px;
   justify-content: center;
@@ -27,13 +27,11 @@ td, th {
   color: antiquewhite;
 }
 
-button {
-  background-color: #282c34;
-  border: none;
+a {
   color: red;
 }
 
-button:hover {
+a:hover {
   color: yellow;
 }
 

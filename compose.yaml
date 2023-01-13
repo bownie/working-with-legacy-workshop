@@ -7,7 +7,7 @@ services:
       target: development
     command: npm run start-watch
     environment:
-      - DATABASE_DB=example
+      - DATABASE_DB=mareena_1
       - DATABASE_USER=root
       - DATABASE_PASSWORD=/run/secrets/db-password
       - DATABASE_HOST=mareena-db
@@ -40,10 +40,12 @@ services:
     volumes:
       - db-data:/var/lib/mysql
       - ./whizzo-mareena/db/init:/initialiase-db
+#    entrypoint:
+#      - sh -c "cd /initialise-db"
     networks:
       - private
     environment:
-      - MYSQL_DATABASE=example
+      - MYSQL_DATABASE=mareena_1
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
   mareena-frontend:
     build:

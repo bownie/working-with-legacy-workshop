@@ -64,15 +64,36 @@ $ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb
 
 For example this works:
 
-$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h whizzo-db -uroot -p
+$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h mareena-db -uroot -p
 
 OR with database:
 
-$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h whizzo-db -D example -uroot -p
+$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h mareena-db -D example -uroot -p
 
 
 # Open bash on the database server
 
+You must use docker ps to find the running container id:
+
+$ docker ps
+
+and then start a BASH shell on it:
+
 $ docker exec -it 39f5d29e001e /bin/bash
 
-Run database scripts
+Then you can run database scripts:
+
+HAVE TO DO THIS MANUALLY FOR THE MOMENT
+
+
+
+
+
+
+# Docker Tips - clearing down all images and volumes
+
+$ docker ps -a -q
+$ docker rm -f $(docker ps -a -q)
+$ docker volume rm `docker volume ls|awk '{print $2}'`
+
+

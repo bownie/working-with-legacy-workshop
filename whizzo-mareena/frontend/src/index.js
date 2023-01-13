@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
       <App />
-      <Clock />
   </React.StrictMode>,
   document.getElementById('root')
 );
