@@ -12,6 +12,8 @@ const morgan = require("morgan");
 // which is a best practice in Docker. Friends don't let friends code their apps to
 // do app logging to files in containers.
 
+// Database API via knex
+//
 const database = require("./database");
 
 // Appi
@@ -26,25 +28,33 @@ app.get("/", function(req, res, next) {
     .catch(next);
 });
 
-app.get("/marina", function(req, res, next) {
-  database.raw('select * from wb_marina')
-  .then(([rows, columns]) => rows[0])
-  .then((row) => res.json({ id: `${row.id}`,
-                            marina_name: `${row.marina_name}`,
-                            marina_address1: `${row.marina_address1}` }))
-  .catch(next);
-})
+app.get('/marina', async function(request, response) {
+  try {
+    const marina = await database('wb_marina').select();
+    response.status(200).json({ marina: marina});
+  } catch(error) {
+    response.status(500).json({ error: "ERROR 500" });
+  }
+});
 
-app.get("/boats", function(req, res, next) {
-  database.raw('select * from wb_boat')
-  .then(([rows, columns]) => rows[0])
-  .then((row) => res.json({ id: `${row.id}`,
-                            boat_name: `${row.boat_name}`,
-                            boat_beam: `${row.boat_beam}`,
-                            record_creation_date: `${row.boat_creation_date}`,
-                            boat_owner_ids: `${row.boat_latest_update}, ${row.boat_owner_ids}`}))
-  .catch(next);
-})
+app.get('/boats', async (request, response) => {
+  try {
+    const boats = await database('wb_boat').select();
+    response.status(200).json({ boats: boats});
+  } catch(error) {
+    response.status(500).json({ error: "ERROR 500" });
+  }
+});
+
+app.get('/bookings', async function(request, response) {
+
+  try {
+    const boats = await database('wb_bookings').select();
+    response.status(200).json({ boats: boats});
+  } catch(error) {
+    response.status(500).json({ error: "ERROR 500" });
+  }
+});
 
 app.get("/healthz", function(req, res) {
   // do app logic here to determine if app is truly healthy
