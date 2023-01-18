@@ -1,4 +1,32 @@
-import React, { useState, useEffect}  from "react";
+import React, {useState, useEffect, useMemo}  from "react";
+import Table from 'rc-table';
+
+const columns = [
+  {
+    title: 'Boat Name',
+    dataIndex: 'boat_name',
+    key: 'name',
+    width: 100,
+  },
+  {
+    title: 'Length',
+    dataIndex: 'boat_length',
+    key: 'length',
+    width: 100,
+  },
+  {
+    title: 'Beam',
+    dataIndex: 'boat_beam',
+    key: 'beam',
+    width: 80,
+  },
+  {
+    title: 'Operations',
+    dataIndex: '',
+    key: 'operations',
+    render: () => <a href="#">Delete</a>,
+  },
+];
 
 async function fetchData(userId) {
   const data = await fetch('/boats')
@@ -11,13 +39,14 @@ async function fetchData(userId) {
       return data;
 }
 
-
-
 function Boats(){
 
   const [data, setData] = useState([])
   
   useEffect(() => {
+
+    async function fetchBoats() {
+
     fetch('/api/boats', { headers: {
       'Content-Type': 'application/json'
     }})
@@ -40,32 +69,16 @@ function Boats(){
         }
       })
       .then(data => {
-        console.log(data.boats);
-        //setData(data.boats, [data.boats]);
-      }, [])
-//    .then((response) => response.data)
-//    .then((data) => console.log(data))
-  }) 
+        setData(data.boats, [data.boats])
+      })
+    }
+    fetchBoats()
+  }, []) 
 
   return (
     <div className="App-header">
       <h1>Boats</h1>
-
-      <div className="stock-container">
-        {data.map((data, key) => {
-          return (
-            <div key={key}>
-              {data.id +
-                " , " +
-                data.boat_name +
-                " ," +
-                data.stockPrice +
-                ", " +
-                data.timeElapsed}
-            </div>
-          );
-        })}
-      </div>
+      <Table columns={columns} data={data} rowKey='id'/>
     </div>
     );
 }
