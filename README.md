@@ -68,7 +68,7 @@ $ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb
 
 OR with database:
 
-$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h mareena-db -D example -uroot -p
+$ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h mareena-db -D mareena_1 -uroot -p
 
 
 # Open bash on the database server
