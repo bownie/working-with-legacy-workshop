@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import BookingForm from "./BookingForm";
 import Table from 'rc-table';
-import "./App.css";
+import "./BookingForm.css";
 
 const columns = [
   {
@@ -72,6 +73,7 @@ const Bookings = () => {
   return (
     <div className="App-header">
       <h1>Bookings</h1>
+      <BookingForm />
       <Table columns={columns} data={data} rowKey='id'/>
     </div>
     );
