@@ -1,6 +1,9 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function(app) {
+
+  // When we target the api we get routed to the backend (without the /api root)
+  //
   app.use(
     "/api",
     createProxyMiddleware({
@@ -8,23 +11,9 @@ module.exports = function(app) {
       pathRewrite: { "^/api": "" }
     })
   );
-/*
-  app.use(
-    "/boats",
-    createProxyMiddleware({
-      target: "http://mareena-backend/boats",
-      pathRewrite: { "^/boats": "" }
-    })
-  );
 
-  app.use(
-    "/marina",
-    createProxyMiddleware({
-      target: "http://mareena-backend/",
-      pathRewrite: { "^/marina": "" }
-    })
-  );
-*/
+  // When we target the worker, rerouted to whizzo-worker
+  //
   app.use(
     "/worker",
     createProxyMiddleware({
@@ -33,5 +22,4 @@ module.exports = function(app) {
     })
   );
 
-  
 };

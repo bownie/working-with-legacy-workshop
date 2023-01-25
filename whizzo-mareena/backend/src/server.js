@@ -46,11 +46,20 @@ app.get('/boats', async (request, response) => {
   }
 });
 
+app.get('/customers', async (request, response) => {
+  try {
+    const customers = await database('wb_customer').select();
+    response.status(200).json({ customers: customers});
+  } catch(error) {
+    response.status(500).json({ error: "ERROR 500" });
+  }
+});
+
 app.get('/bookings', async function(request, response) {
 
   try {
-    const boats = await database('wb_bookings').select();
-    response.status(200).json({ boats: boats});
+    const bookings = await database('wb_bookings_vw').select();
+    response.status(200).json({ bookings: bookings});
   } catch(error) {
     response.status(500).json({ error: "ERROR 500" });
   }

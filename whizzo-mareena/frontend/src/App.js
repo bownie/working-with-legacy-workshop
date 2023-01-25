@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./Nav";
 import Home from "./Home";
 import Boats from "./Boats";
-import Users from "./Users";
 import Bookings from "./Bookings";
+import Customers from "./Customers";
+import Users from "./Users";
+import Admin from "./Admin";
 
 function App() {
 
@@ -15,7 +17,9 @@ function App() {
         <Routes>
           <Route exact path='/' element={ <Home/>}/>
           <Route path='/boats' element={ <Boats /> }/>
+          <Route path='/customers' element={ <Customers /> }/>
           <Route path='/bookings' element={ <Bookings /> }/>
+          <Route path='/admin' element={ <Admin /> }/>
           <Route path='/users' element={ <Users /> }/>
         </Routes>
       </Router>

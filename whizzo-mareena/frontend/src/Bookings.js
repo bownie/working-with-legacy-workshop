@@ -1,12 +1,47 @@
 import React, { useEffect, useState } from "react";
+import Table from 'rc-table';
 import "./App.css";
+
+const columns = [
+  {
+    title: 'Booking #',
+    dataIndex: 'id',
+    key: 'booking_id',
+    width: 100,
+  },
+  {
+    title: 'Customer Name',
+    dataIndex: 'customer_name',
+    key: 'name',
+    width: 100,
+  },
+  {
+    title: 'Boat Name',
+    dataIndex: 'boat_name',
+    key: 'boatname',
+    width: 100,
+  },
+  {
+    title: 'Arrival Time',
+    dataIndex: 'arrival_time',
+    key: 'arrival_time',
+    width: 80,
+  },
+  {
+    title: 'Expected Departure Time',
+    dataIndex: 'expected_departure_time',
+    key: 'expected_departure_time',
+    render: () => <a href="#">Delete</a>,
+  },
+];
+
 
 const Bookings = () => {
 
   const [data, setData] = useState([])
 
   useEffect(() => {  
-    fetch('/marina', {
+    fetch('/api/bookings', {
       headers: {
         'Accept': 'application/json'
       } })
@@ -29,15 +64,15 @@ const Bookings = () => {
       }
     }
     )
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .then((data) => setData(data))
-  }, [data] )
+    .then(data => {
+      setData(data.bookings, [data.bookings])
+    })
+  }, [] )
 
   return (
     <div className="App-header">
       <h1>Bookings</h1>
-      <p>{data}</p>
+      <Table columns={columns} data={data} rowKey='id'/>
     </div>
     );
 }

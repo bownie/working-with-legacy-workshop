@@ -8,3 +8,4 @@ source wb_berth.sql;
 source wb_customer.sql;
 source wb_employee.sql;
 source wb_boat.sql;
+source wb_bookings.sql;

@@ -28,17 +28,6 @@ const columns = [
   },
 ];
 
-async function fetchData(userId) {
-  const data = await fetch('/boats')
-      .then(promise => {
-          return promise.data;
-      })
-      .catch(e => {
-          console.error(e);
-      })
-      return data;
-}
-
 function Boats(){
 
   const [data, setData] = useState([])
@@ -47,32 +36,32 @@ function Boats(){
 
     async function fetchBoats() {
 
-    fetch('/api/boats', { headers: {
-      'Content-Type': 'application/json'
-    }})
-    .then( response => {
-        if ( !response.ok ) {
-          throw new Error( 'Network response was not ok.' );
-        } else {
-          const contentType = response.headers.get('content-type');
-          if (!contentType ) {
-            throw new TypeError("No content-type in header.");
-          } else if ( contentType.includes('application/json') ) {
-            console.log("application/json");
-            return response.json();
-          } else if ( contentType.includes('text/html') ) {
-            console.log("text/html");
-            return response.text();
+      fetch('/api/boats', { headers: {
+        'Content-Type': 'application/json'
+      }})
+      .then( response => {
+          if ( !response.ok ) {
+            throw new Error( 'Network response was not ok.' );
           } else {
-            throw new TypeError("Invalid content-type.");
+            const contentType = response.headers.get('content-type');
+            if (!contentType ) {
+              throw new TypeError("No content-type in header.");
+            } else if ( contentType.includes('application/json') ) {
+              console.log("application/json");
+              return response.json();
+            } else if ( contentType.includes('text/html') ) {
+              console.log("text/html");
+              return response.text();
+            } else {
+              throw new TypeError("Invalid content-type.");
+            }
           }
-        }
-      })
-      .then(data => {
-        setData(data.boats, [data.boats])
-      })
-    }
-    fetchBoats()
+        })
+        .then(data => {
+          setData(data.boats, [data.boats])
+        })
+      }
+  fetchBoats()
   }, []) 
 
   return (
