@@ -33,7 +33,7 @@ public class MariaDBSelect {
 
   private static final String DB_URL = "jdbc:mariadb://" + DB_HOST + ":" + DB_PORT + "/" + DB_DB;
 
-  public static void connect(String[] args) throws Exception {
+  public static String connect(String[] args) throws Exception {
 
     System.out.println("DB connection string = " + DB_URL);
     System.out.println("DB_PASS_FILE = " + DB_PASS_FILE);
@@ -72,10 +72,12 @@ public class MariaDBSelect {
     String tableName = "wb_marina";
     String query = "select * from  " + tableName;
 
+    String marina_name = "";
+
     try (Statement stmt = conn.createStatement()) {
       ResultSet rs = stmt.executeQuery(query);
       while (rs.next()) {
-        String marina_name = rs.getString("marina_name");
+        marina_name = rs.getString("marina_name");
         /* int supplierID = rs.getInt("SUP_ID");
         float price = rs.getFloat("PRICE");
         int sales = rs.getInt("SALES");
@@ -85,7 +87,9 @@ public class MariaDBSelect {
     } catch (SQLException e) {
       System.err.println("SQL Exception = " + e.getMessage());
     }
-    
+
     conn.close();
+
+    return marina_name;
   }
 }

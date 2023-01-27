@@ -4,7 +4,9 @@ import mariadb.*;
 
 public class App {
 
-    //private mariadb.MariaDBSelect selector = new mariadb.MariaDBSelect();
+    // Using class variable for async returns
+    //
+    private static String marina_name = "";
 
     public static void main(String[] args) {
 
@@ -12,14 +14,14 @@ public class App {
 
         get("/", (req, res) -> "Hello from Whizzo Worker!");
 
-
         String[] nameList = {"A", "B", "C"};
+
         try {
-            mariadb.MariaDBSelect.connect(nameList);
+            marina_name = mariadb.MariaDBSelect.connect(nameList);
         } catch (Exception e) {
             System.out.println("Caught problem with database select " + e.getMessage());
         }
 
-        get("/select", (req, res) -> "SELECT");
+        get("/select", (req, res) -> "Marina name = " + marina_name);
     }
 }
