@@ -1,6 +1,4 @@
 import static spark.Spark.*;
-import java.lang.Exception;
-import mariadb.*;
 
 public class WhizzoWorker {
 
@@ -17,7 +15,7 @@ public class WhizzoWorker {
         String[] nameList = {"A", "B", "C"};
 
         try {
-            marina_name = mariadb.MariaDBSelect.connect(nameList);
+            marina_name = database.DatabaseQueries.connect(nameList);
         } catch (Exception e) {
             System.out.println("Caught problem with database select " + e.getMessage());
         }
