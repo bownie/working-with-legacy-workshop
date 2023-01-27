@@ -96,5 +96,12 @@ What model do you see?
 
 https://thedomaindrivendesign.io/anemic-model-x-rich-model/
 
-How is the test?
+How are the test?
+
+
+# Power of Plugins (in VSCode)
+
+Warnings and refactoring support from default plugins
+
+- SonarLint
 
