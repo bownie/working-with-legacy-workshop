@@ -2,7 +2,7 @@ import static spark.Spark.*;
 import java.lang.Exception;
 import mariadb.*;
 
-public class App {
+public class WhizzoWorker {
 
     // Using class variable for async returns
     //

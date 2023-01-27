@@ -22,10 +22,10 @@ usermod -aG docker vscode
 EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
-CMD ["java", "-jar", "target/app.jar" ]
+CMD ["java", "-jar", "target/whizzoworker.jar" ]
 
 FROM eclipse-temurin:17-jre-focal
 ARG DEPENDENCY=/workdir/server/target
 EXPOSE 8080
-COPY --from=build ${DEPENDENCY}/app.jar /app.jar
-CMD java -jar /app.jar
+COPY --from=build ${DEPENDENCY}/whizzoworker.jar /whizzoworker.jar
+CMD java -jar /whizzoworker.jar
