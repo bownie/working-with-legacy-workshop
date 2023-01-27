@@ -1,8 +1,6 @@
 # Working with Legacy Systems Workshop
 
 
-
-
 ## Prerequisites
 
 - Docker desktop installed
@@ -85,15 +83,18 @@ Then you can run database scripts:
 
 HAVE TO DO THIS MANUALLY FOR THE MOMENT
 
-
-
-
-
-
 # Docker Tips - clearing down all images and volumes
 
 $ docker ps -a -q
 $ docker rm -f $(docker ps -a -q)
 $ docker volume rm `docker volume ls|awk '{print $2}'`
 
+
+# DDD things to consider
+
+What model do you see?
+
+https://thedomaindrivendesign.io/anemic-model-x-rich-model/
+
+How is the test?
 

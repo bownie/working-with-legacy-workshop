@@ -62,10 +62,19 @@ services:
       - mareena-backend
   mareena-worker:
     build: whizzo-worker/whizzo-worker
+    secrets:
+      - db-password
+    environment:
+      - DATABASE_DB=mareena_1
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD_FILE=/run/secrets/db-password
+      - DATABASE_HOST=mareena-db
+      - DATABASE_PORT=3306
     ports:
       - 8080:8080
     networks:
       - public
+      - private
     depends_on:
       - mareena-backend
 
