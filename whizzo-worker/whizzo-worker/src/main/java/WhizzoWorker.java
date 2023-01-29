@@ -4,7 +4,7 @@ public class WhizzoWorker {
 
     // Using class variable for async returns
     //
-    private static String marina_name = "";
+    private static String marinaName = "";
 
     public static void main(String[] args) {
 
@@ -15,11 +15,11 @@ public class WhizzoWorker {
         String[] nameList = {"A", "B", "C"};
 
         try {
-            marina_name = database.DatabaseQueries.connect(nameList);
+            marinaName = database.DatabaseQueries.connect(nameList);
         } catch (Exception e) {
             System.out.println("Caught problem with database select " + e.getMessage());
         }
 
-        get("/select", (req, res) -> "Marina name = " + marina_name);
+        get("/select", (req, res) -> "Marina name = " + marinaName);
     }
 }

@@ -37,6 +37,15 @@ app.get('/marina', async function(request, response) {
   }
 });
 
+
+//
+// https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
+
 app.get('/boats', async (request, response) => {
   try {
     const boats = await database('wb_boat').select();

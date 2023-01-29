@@ -12,6 +12,15 @@ module.exports = function(app) {
     })
   );
 
+  // Login
+  //
+  app.use(
+    "/login",
+    createProxyMiddleware({
+      target: "http://mareena-backend/"
+    })
+  );
+
   // When we target the worker, rerouted to whizzo-worker
   //
   app.use(

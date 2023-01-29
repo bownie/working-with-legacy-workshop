@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {  Link } from "react-router-dom";
 import "./App.css";
 
@@ -18,6 +18,7 @@ function Nav() {
                 <th><Link to="/bookings">Bookings</Link></th>
                 <th><Link to="/customers">Customers</Link></th>
                 <th><Link to="/admin">Admin</Link></th>
+                <th>Logout</th>
             </tr>
             </tbody>
         </table> 
