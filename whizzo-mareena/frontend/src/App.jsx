@@ -8,20 +8,25 @@ import Customers from "./Customers";
 import Users from "./Users";
 import Admin from "./Admin";
 import Login from './Login';
+import useToken from './useToken';
+import Logout from "./Logout";
 
 function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken));
 }
 
 function getToken() {
-  const tokenString = sessionStorage.getItem('token');
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token
 }
+
 
 function App() {
 
-  const token = getToken();
+  function logout() {
+    //localStorage.clear();
+    //window.location.href = '/';
+    console.log("LOGOUT");
+  }
+
+  const { token, setToken } = useToken();
 
   // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
   if(!token) {
@@ -39,6 +44,7 @@ function App() {
           <Route path='/bookings' element={ <Bookings /> }/>
           <Route path='/admin' element={ <Admin /> }/>
           <Route path='/users' element={ <Users /> }/>
+          <Route path='/logout' element={ <Logout /> }/>
         </Routes>
       </Router>
     </div>

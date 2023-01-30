@@ -41,6 +41,7 @@ app.get('/marina', async function(request, response) {
 //
 // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 app.use('/login', (req, res) => {
+  //console.log("REQ = " + JSON.stringify(req));
   res.send({
     token: 'test123'
   });

@@ -18,7 +18,7 @@ function Nav() {
                 <th><Link to="/bookings">Bookings</Link></th>
                 <th><Link to="/customers">Customers</Link></th>
                 <th><Link to="/admin">Admin</Link></th>
-                <th>Logout</th>
+                <th><Link to="/logout">Logout</Link></th>
             </tr>
             </tbody>
         </table> 
