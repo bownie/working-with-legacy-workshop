@@ -13,7 +13,11 @@ CREATE TABLE wb_employee
     `employee_personal_email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'personal email',
     `marina_id` bigint(20) NOT NULL,
     `employee_type_id` bigint(20) NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_employee_marina`
+    FOREIGN KEY (`marina_id`) REFERENCES `wb_marina` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 insert into wb_employee values(1, "Davey Jones", "The Bottom of the Sea 11", "Atlantic Ocean", "1122YY", "North Sea", "+31 638 378323", "davey@mareena.com", "davey@jones.sea", 1, 1);

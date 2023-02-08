@@ -9,7 +9,11 @@ CREATE TABLE wb_boatyard
     `boatyard_postcode` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'postcode',
     `boatyard_country` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'country',
     `marina_id` bigint(20) NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_boatyard_marina`
+    FOREIGN KEY (`marina_id`) REFERENCES `wb_marina` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 insert into wb_boatyard values (1, "Zeeland Boats", "Zeeland Brug 23", "Kats", "1023AB", "NL", 1);

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS wb_boat;
+DROP TABLE IF EXISTS wb_bookings;
 
 CREATE TABLE wb_bookings
 (
