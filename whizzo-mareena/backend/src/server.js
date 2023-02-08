@@ -1,7 +1,7 @@
 // simple node web server that displays hello world
 // optimized for Docker image
-
 const express = require("express");
+
 // this example uses express web framework so we know what longer build times
 // do and how Dockerfile layer ordering matters. If you mess up Dockerfile ordering
 // you'll see long build times on every code change + build. If done correctly,
@@ -19,7 +19,10 @@ const database = require("./database");
 // Appi
 const app = express();
 
+const bodyParser = require('body-parser'); // middleware
+
 app.use(morgan("common"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", function(req, res, next) {
   database.raw('select VERSION() version')
@@ -38,12 +41,20 @@ app.get('/marina', async function(request, response) {
 });
 
 
+// Some URLS used to create this authentication:
 //
 // https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
+// https://heynode.com/tutorial/process-user-login-form-expressjs/
+// https://stackoverflow.com/questions/56561205/how-to-send-x-www-form-urlencoded-request-by-react
+//
+//
 app.use('/login', (req, res) => {
-  //console.log("REQ = " + JSON.stringify(req));
+  let username = req.body.username;
+
+  // Check for user/pass here and return user if it's ok
+  //
   res.send({
-    token: 'test123'
+    token: username
   });
 });
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo}  from "react";
+import React, {useState, useEffect} from "react";
 import Table from 'rc-table';
 
 const columns = [
@@ -24,7 +24,7 @@ const columns = [
     title: 'Operations',
     dataIndex: '',
     key: 'operations',
-    render: () => <a href="#">Delete</a>,
+    render: () => <a href="/delete_boat">Delete</a>,
   },
 ];
 

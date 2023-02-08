@@ -25,7 +25,7 @@ const columns = [
     title: 'Postcode',
     dataIndex: 'customer_postcode',
     key: 'postcode',
-    render: () => <a href="#">Delete</a>,
+    render: () => <a href="/delete_customer">Delete</a>,
   },
 ];
 

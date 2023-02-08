@@ -1,16 +1,19 @@
-import React, {useState } from 'react';
+import {useState } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
+
+const qs = require('qs');
+
 
 async function loginUser(credentials) {
     return fetch('/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify(credentials)
+      body: qs.stringify(credentials)
     })
-      .then(data => data.json())
+    .then(data => data.json())
 }
 
 export default function Login({ setToken }) {
@@ -21,8 +24,8 @@ export default function Login({ setToken }) {
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser({
-          username,
-          password
+          "username": username,
+          "password": password
         });
         setToken(token);
     }

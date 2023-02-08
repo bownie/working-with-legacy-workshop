@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./Nav";
 import Home from "./Home";
@@ -11,20 +11,8 @@ import Login from './Login';
 import useToken from './useToken';
 import Logout from "./Logout";
 
-function setToken(userToken) {
-}
-
-function getToken() {
-}
-
 
 function App() {
-
-  function logout() {
-    //localStorage.clear();
-    //window.location.href = '/';
-    console.log("LOGOUT");
-  }
 
   const { token, setToken } = useToken();
 

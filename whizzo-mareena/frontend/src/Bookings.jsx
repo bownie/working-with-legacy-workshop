@@ -32,7 +32,7 @@ const columns = [
     title: 'Expected Departure Time',
     dataIndex: 'expected_departure_time',
     key: 'expected_departure_time',
-    render: () => <a href="#">Delete</a>,
+    render: () => <a href="/delete_booking">Delete</a>,
   },
 ];
 
