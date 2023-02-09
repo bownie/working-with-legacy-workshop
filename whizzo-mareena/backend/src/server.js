@@ -60,7 +60,7 @@ app.use('/login', (req, res) => {
 
 app.get('/boats', async (request, response) => {
   try {
-    const boats = await database('wb_boat').select();
+    const boats = await database('wb_boat_vw').select();
     response.status(200).json({ boats: boats});
   } catch(error) {
     response.status(500).json({ error: "ERROR 500" });
@@ -85,6 +85,17 @@ app.get('/bookings', async function(request, response) {
     response.status(500).json({ error: "ERROR 500" });
   }
 });
+
+app.get('/pontoons', async function(request, response) {
+
+  try {
+    const bookings = await database('wb_pontoon').select();
+    response.status(200).json({ bookings: bookings});
+  } catch(error) {
+    response.status(500).json({ error: "ERROR 500" });
+  }
+});
+
 
 app.get("/healthz", function(req, res) {
   // do app logic here to determine if app is truly healthy

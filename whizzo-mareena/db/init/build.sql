@@ -26,3 +26,4 @@ source wb_employee.sql;
 source wb_boat.sql;
 source wb_bookings.sql;
 source wb_bookings_vw.sql;
+source wb_boat_vw.sql;

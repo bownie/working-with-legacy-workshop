@@ -9,6 +9,12 @@ const columns = [
     width: 100,
   },
   {
+    title: 'Type',
+    dataIndex: 'boat_type_name',
+    key: 'type',
+    width: 100,
+  },
+  {
     title: 'Length',
     dataIndex: 'boat_length',
     key: 'length',
