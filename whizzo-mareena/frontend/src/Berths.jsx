@@ -1,48 +1,53 @@
 import React, {useState, useEffect} from "react";
 import Table from 'rc-table';
 
+// Berth view columns
+//
+// berth_id, berth_name, berth_length, berth_beam, berth_last_berth_date, berth_latest_out_date,
+// berth_owner_id, boat_id, pontoon_id, boat_name, customer_name, pontoon_name, pontoon_type_name
+
 const columns = [
+  {
+    title: 'Id',
+    dataIndex: 'berth_id',
+    key: 'id',
+    width: 30,
+  },
+  {
+    title: 'Berth Name',
+    dataIndex: 'berth_name',
+    key: 'berth_name',
+    width: 100,
+  },
   {
     title: 'Boat Name',
     dataIndex: 'boat_name',
-    key: 'name',
+    key: 'boat_name',
     width: 100,
   },
   {
-    title: 'Type',
-    dataIndex: 'boat_type_name',
-    key: 'type',
+    title: 'Customer Name',
+    dataIndex: 'customer_name',
+    key: 'customer_name',
     width: 100,
   },
   {
-    title: 'Length',
-    dataIndex: 'boat_length',
-    key: 'length',
-    width: 100,
-  },
-  {
-    title: 'Beam',
-    dataIndex: 'boat_beam',
-    key: 'beam',
-    width: 80,
-  },
-  {
-    title: 'Operations',
-    dataIndex: '',
-    key: 'operations',
-    render: () => <a href="/delete_boat">Delete</a>,
+    title: 'Pontoon',
+    dataIndex: 'pontoon_name',
+    key: 'pontoon_name',
+    width: 100
   },
 ];
 
-function Boats(){
+function Berths(){
 
   const [data, setData] = useState([])
   
   useEffect(() => {
 
-    async function fetchBoats() {
+    async function fetchBerths() {
 
-      fetch('/api/boats', { headers: {
+      fetch('/api/berths', { headers: {
         'Content-Type': 'application/json'
       }})
       .then( response => {
@@ -64,19 +69,19 @@ function Boats(){
           }
         })
         .then(data => {
-          setData(data.boats, [data.boats])
+          setData(data.berths, [data.berths])
         })
       }
-  fetchBoats()
+  fetchBerths()
   }, []) 
 
   return (
     <div className="App-header">
-      <h1>Boats</h1>
-      <Table columns={columns} data={data} rowKey='name'/>
+      <h1>Berths</h1>
+      <Table columns={columns} data={data} rowKey='id'/>
     </div>
     );
 }
 
 
-export default Boats;
+export default Berths;

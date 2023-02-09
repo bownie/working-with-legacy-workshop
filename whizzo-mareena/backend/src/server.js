@@ -86,15 +86,16 @@ app.get('/bookings', async function(request, response) {
   }
 });
 
-app.get('/pontoons', async function(request, response) {
+app.get('/berths', async function(request, response) {
 
   try {
-    const bookings = await database('wb_pontoon').select();
-    response.status(200).json({ bookings: bookings});
+    const berths = await database('wb_berth_vw').select();
+    response.status(200).json({ berths: berths});
   } catch(error) {
     response.status(500).json({ error: "ERROR 500" });
   }
 });
+
 
 
 app.get("/healthz", function(req, res) {
