@@ -16,9 +16,9 @@ CREATE TABLE wb_customer
     `customer_type_id` bigint(20) NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_customer_marina`
-    FOREIGN KEY (`marina_id`) REFERENCES `wb_marina` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
+    FOREIGN KEY (`marina_id`) REFERENCES `wb_marina` (`id`),
+    CONSTRAINT `fk_customer_type`
+    FOREIGN KEY (`customer_type_id`) REFERENCES `wb_customer_type` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 insert into wb_customer values (1, 1, "Long John Silver", "The High Seas", "Somewhere in the Ocean", "DUNNO", "NA", "NA", "+4472673 827382", "longjohn@silver.net", 0, 1);

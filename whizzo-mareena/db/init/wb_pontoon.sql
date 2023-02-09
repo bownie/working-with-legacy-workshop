@@ -22,4 +22,6 @@ CREATE TABLE wb_pontoon
     ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-insert into wb_pontoon values (1, 1, 1, "Kats pontoon", 10, 5, NULL, NULL, NULL);
+insert into wb_pontoon values (1, 1, 1, "Kats West", 10, 5, NULL, NULL, NULL);
+insert into wb_pontoon values (2, 1, 1, "Kats North", 10, 5, NULL, NULL, NULL);
+insert into wb_pontoon values (3, 1, 2, "Kats South", 10, 5, NULL, NULL, NULL);
