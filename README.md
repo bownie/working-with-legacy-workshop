@@ -68,6 +68,9 @@ OR with database:
 
 $ docker run -it --network legacy-systems-thinking-workshop_private --rm mariadb:10.6.4-focal mariadb -h mareena-db -D mareena_1 -uroot -p
 
+OR with local mysql client (might need to modify docker compose to export port)
+
+$ mysql -h 127.0.0.1 -u root --protocol tcp -P 3306 -p
 
 # Open bash on the database server
 
@@ -88,6 +91,15 @@ HAVE TO DO THIS MANUALLY FOR THE MOMENT
 $ docker ps -a -q
 $ docker rm -f $(docker ps -a -q)
 $ docker volume rm `docker volume ls|awk '{print $2}'`
+
+
+## Docker
+
+How to connect from n8n in a docker container to our embedded docker compose mysql? Expose the port to the host and then use this in the host connection from n8n:
+
+host.docker.internal
+
+
 
 
 # DDD things to consider
