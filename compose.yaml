@@ -42,8 +42,12 @@ services:
       - ./whizzo-mareena/db/init:/initialiase-db
 #    entrypoint:
 #      - sh -c "cd /initialise-db"
+    # exposing port locally 
+    ports:
+      - 3306:3306
     networks:
       - private
+      - public
     environment:
       - MYSQL_DATABASE=mareena_1
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
@@ -77,6 +81,9 @@ services:
       - private
     depends_on:
       - mareena-backend
+    profiles:
+      - donotstart
+
 
 networks:
   public:
