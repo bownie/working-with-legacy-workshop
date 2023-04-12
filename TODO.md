@@ -1,6 +1,7 @@
-[ ] Complete the database schema
-[ ] Import default data and ensure it's re-runnable
-[ ] Update documentation according with database population and resetting instructions
-[ ] Decide on Users and Use Cases
-[ ] Design Screens for Users 
-[ ] Implement Screens for Users
+Front end library for diagramming:
+
+https://github.com/projectstorm/react-diagrams
+
+from here:
+
+https://modeling-languages.com/javascript-drawing-libraries-diagrams/

@@ -1,0 +1,80 @@
+erdiagram Model
+
+notation=default
+
+entity wb_boat {
+   id key
+   name VARCHAR
+	attr1
+   attr2
+}
+entity wb_customer {
+   id key
+   type_id
+   name
+   address1
+   address2
+   region
+   country
+   postcode
+
+}
+
+entity wb_marina {
+   id key
+   name 
+   address1
+   address2 
+}
+
+entity wb_boatyard {
+   id key
+   name
+}
+
+
+entity wb_component {
+   id key
+   name 
+}
+
+entity wb_customer_type {
+   id key
+   type_name
+}
+
+entity wb_employee {
+   id key
+   name
+}
+
+entity wb_pontoon {
+  id key
+  attr3s
+}
+
+relationship customer_boats {
+    wb_customer[1] -> wb_boat[0..N]
+}
+
+relationship customer_type {
+       wb_customer[1] -> wb_customer_type[1]
+}
+
+relationship boat_components {
+   wb_boat[1] -> wb_component[0..N]
+}
+
+
+relationship marina_pontoon {
+   wb_marina[1] -> wb_pontoon[0..N]
+}
+
+relationship marina_boatyard {
+   wb_marina[1] -> wb_boatyard[0..N]
+}
+
+
+relationship marina_employee {
+   wb_marina[1] -> wb_employee[1..N]
+}
