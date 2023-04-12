@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import marina_logo from "./marina.jpg";
 
+
+const marina_logo = require('./marina.jpg')
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
 
   return (
     <div>
+      <p>hello</p>
       <header className="App-header">
         <h3>Mareena by Whizzo BV</h3>
         <img src={marina_logo} className="App-logo" alt="logo" />
