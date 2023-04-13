@@ -18,6 +18,7 @@ function Nav() {
             <tr>
                 <th>Logged In as "{userName}"</th>
                 <th><Link to="/"><img src="/Whizzo.png" width="80" height="80" padding="20px" alt="Whizzo Mareena Logo"/></Link></th>
+                <th><Link to="/map">Map</Link></th>
                 <th><Link to="/boats">Boats</Link></th>
                 <th><Link to="/bookings">Bookings</Link></th>
                 <th><Link to="/customers">Customers</Link></th>

@@ -73,7 +73,7 @@ function Boats(){
   return (
     <div className="App-header">
       <h1>Boats</h1>
-      <Table columns={columns} data={data} rowKey='name'/>
+      <Table columns={columns} data={data} rowKey='id'/>
     </div>
     );
 }
