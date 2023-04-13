@@ -1,58 +1,56 @@
-import createEngine, { DiagramModel, DefaultNodeModel, DiagramEngine } from '@projectstorm/react-diagrams';
-import * as _ from 'lodash';
+import createEngine, { DiagramModel, DefaultNodeModel, DefaultDiagramState } from '@projectstorm/react-diagrams';
 import * as React from 'react';
-import { DemoButton, DemoWorkspaceWidget } from './helpers/DemoWorkspaceWidget';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { DemoCanvasWidget } from './helpers/DemoCanvasWidget';
+import "./index.css";
 
-class Map extends React.Component<{ model: DiagramModel; engine: DiagramEngine }, any> {
-	addPorts = () => {
-		const nodes: DefaultNodeModel[] = _.values(this.props.model.getNodes()) as DefaultNodeModel[];
-		for (let node of nodes) {
-			if (node.getOptions().name === 'Node 2') {
-				node.addInPort(`in-${node.getInPorts().length + 1}`, false);
-			} else {
-				node.addOutPort(`out-${node.getOutPorts().length + 1}`, false);
-			}
-		}
-		this.props.engine.repaintCanvas();
-	};
 
-	render() {
-		const { engine } = this.props;
-		return (
-			<DemoWorkspaceWidget buttons={<DemoButton onClick={this.addPorts}>Add more ports</DemoButton>}>
-				<DemoCanvasWidget>
-					<CanvasWidget engine={engine} />
-				</DemoCanvasWidget>
-			</DemoWorkspaceWidget>
-		);
-	}
-}
-
-export default () => {
+const Map = () => {
 	//1) setup the diagram engine
 	var engine = createEngine();
+
+	// ############################################ MAGIC HAPPENS HERE
+	const state = engine.getStateMachine().getCurrentState();
+	if (state instanceof DefaultDiagramState) {
+		state.dragNewLink.config.allowLooseLinks = false;
+	}
+	// ############################################ MAGIC HAPPENS HERE
 
 	//2) setup the diagram model
 	var model = new DiagramModel();
 
 	//3-A) create a default node
 	var node1 = new DefaultNodeModel('Node 1', 'rgb(0,192,255)');
+	var port1 = node1.addOutPort('Out');
 	node1.setPosition(100, 100);
 
 	//3-B) create another default node
 	var node2 = new DefaultNodeModel('Node 2', 'rgb(192,255,0)');
+	var port2 = node2.addInPort('In');
 	node2.setPosition(400, 100);
 
-	// link the ports
+	//3-C) link the 2 nodes together
+	var link1 = port1.link(port2);
+
+	//3-D) create an orphaned node
+	var node3 = new DefaultNodeModel('Node 3', 'rgb(0,192,255)');
+	node3.addOutPort('Out');
+	node3.setPosition(100, 200);
 
 	//4) add the models to the root graph
-	model.addAll(node1, node2);
+	model.addAll(node1, node2, node3, link1);
 
 	//5) load model into engine
 	engine.setModel(model);
 
 	//6) render the diagram!
-	return <Map engine={engine} model={model} />;
+	return (
+		<DemoCanvasWidget>
+      <div style={{ height: "100vh", width: "100vw", backgroundColor: "aliceblue", display: "grid"}}>
+  			<CanvasWidget className="canvas" engine={engine} />
+      </div>
+		</DemoCanvasWidget>
+	);
 };
+
+export default Map;
