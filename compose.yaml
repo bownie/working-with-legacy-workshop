@@ -81,8 +81,8 @@ services:
       - private
     depends_on:
       - mareena-backend
-    #profiles:
-    #  - donotstart
+    profiles:
+      - donotstart
 
 
 networks:
