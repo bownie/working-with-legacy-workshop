@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from "react";
 import Table from 'rc-table';
+import createEngine, { DiagramModel, DefaultNodeModel, DefaultDiagramState } from '@projectstorm/react-diagrams';
+import { CanvasWidget } from '@projectstorm/react-canvas-core';
+import { DemoCanvasWidget } from './helpers/DemoCanvasWidget';
+import MarinaMap from './MarinaMap';
+import "./index.css";
+
 
 // Berth view columns
 //
@@ -58,6 +64,8 @@ function Berths(){
     setSortOrder(sorter);
   };
 
+  console.log("createEngine");
+
   useEffect(() => {
 
     async function fetchBerths() {
@@ -97,6 +105,9 @@ function Berths(){
       pagination={false}
       sortOrder={sortOrder.order}
       sortColumns={sortOrder.columnKey}/>
+      <div>
+        <MarinaMap/>
+      </div>
     </div>
     );
 }

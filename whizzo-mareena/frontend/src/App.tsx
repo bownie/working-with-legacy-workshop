@@ -8,7 +8,7 @@ import Customers from "./Customers";
 import Users from "./Users";
 import Admin from "./Admin";
 import Login from './Login';
-import Map from './Map';
+import MarinaMap from './MarinaMap';
 import useToken from './useToken';
 import Logout from "./Logout";
 
@@ -27,7 +27,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path='/' element={ <Home/>}/>
-          <Route path='/map' element={ <Map /> }/>
+          <Route path='/map' element={ <MarinaMap /> }/>
           <Route path='/boats' element={ <Boats /> }/>
           <Route path='/customers' element={ <Customers /> }/>
           <Route path='/bookings' element={ <Bookings /> }/>

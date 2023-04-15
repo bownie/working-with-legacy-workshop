@@ -5,7 +5,7 @@ import { DemoCanvasWidget } from './helpers/DemoCanvasWidget';
 import "./index.css";
 
 
-const Map = () => {
+const MarinaMap = () => {
 	//1) setup the diagram engine
 	var engine = createEngine();
 
@@ -20,9 +20,12 @@ const Map = () => {
 	var model = new DiagramModel();
 
 	//3-A) create a default node
-	var node1 = new DefaultNodeModel('Node 1', 'rgb(0,192,255)');
-	var port1 = node1.addOutPort('Out');
+	var node1 = new DefaultNodeModel('Pontoon 1', 'rgb(0,192,255)');
+	var port1_1 = node1.addOutPort('A1');
+	var port1_2 = node1.addOutPort('A2');
+	//port1_2.setSelected();
 	node1.setPosition(100, 100);
+	node1.setLocked(true);
 
 	//3-B) create another default node
 	var node2 = new DefaultNodeModel('Node 2', 'rgb(192,255,0)');
@@ -30,7 +33,7 @@ const Map = () => {
 	node2.setPosition(400, 100);
 
 	//3-C) link the 2 nodes together
-	var link1 = port1.link(port2);
+	//var link1 = port1.link(port2);
 
 	//3-D) create an orphaned node
 	var node3 = new DefaultNodeModel('Node 3', 'rgb(0,192,255)');
@@ -38,7 +41,7 @@ const Map = () => {
 	node3.setPosition(100, 200);
 
 	//4) add the models to the root graph
-	model.addAll(node1, node2, node3, link1);
+	model.addAll(node1, node2, node3);
 
 	//5) load model into engine
 	engine.setModel(model);
@@ -53,4 +56,4 @@ const Map = () => {
 	);
 };
 
-export default Map;
+export default MarinaMap;

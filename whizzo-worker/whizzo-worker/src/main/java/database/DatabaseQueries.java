@@ -3,7 +3,7 @@ package database;
 import java.sql.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 
 public class DatabaseQueries {
@@ -13,7 +13,7 @@ public class DatabaseQueries {
   private static final String DB_URL = "jdbc:mariadb://" + System.getenv("DATABASE_HOST") +
                                        ":" + System.getenv("DATABASE_PORT") + "/" + System.getenv("DATABASE_DB");
 
-  private static final Logger logger = Logger.getLogger(DatabaseQueries.class);
+  private static final Logger logger = LogManager.getLogger(DatabaseQueries.class);
 
   public static String connect(String [] args) throws Exception {
 

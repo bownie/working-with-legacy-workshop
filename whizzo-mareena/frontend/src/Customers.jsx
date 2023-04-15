@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Table from 'rc-table';
 import "./App.css";
 
+
 const columns = [
   {
     title: 'Name',
